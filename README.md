@@ -1,16 +1,19 @@
 # Connity Site
 
-Connity Android uygulamasının APK indirme sitesi.
+Connity Android uygulamasının resmî APK indirme sitesi. Zyven Studios.
 
 ## Yapı
-- `index.html`: tüm site (tek dosya)
-- `assets/logo.png`: logo (eklenince otomatik kullanılır, yoksa `logo-placeholder.svg` görünür)
+- `index.html`: tüm site (tek dosya, kütüphanesiz)
+- `assets/logo.png`: Connity logosu
+- `assets/screens/`: gerçek uygulama ekran görüntüleri (`ekran-1.png`, `ekran-2.png`, `ekran-3.png`). Dosya yoksa boş çerçeve görünür.
 
 ## APK
-İndirme butonu şu adrese gider:
-`https://github.com/networkendoria/Connity-Site/releases/latest/download/connity.apk`
+İndirme butonu sitenin içindeki dosyaya gider: `download/connity.apk`
 
-APK'yı depodaki **Releases** bölümüne `connity.apk` adıyla yükle.
+Yeni sürüm çıkınca bu dosyanın üzerine yeni APK'yı aynı adla yükle ve `index.html` içindeki sürüm/boyut satırını (`class="meta"`) güncelle.
+
+## Yasal sayfalar
+Gizlilik Politikası, Kullanım Koşulları, KVKK, Hesap Silme ve İletişim bağlantıları "Yakında" olarak bekliyor. Sayfalar hazır olunca `index.html` içindeki ilgili `href="#"` değerlerini güncelle.
 
 ## Yayın
 Settings → Pages → Branch: `main`, klasör `/ (root)`.
