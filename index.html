@@ -376,7 +376,8 @@
             </a>
           </div>
           <!-- Sürüm ve boyut gerçek dosyadan: download/connity.apk (15.265.243 bayt). Yeni APK koyunca burayı güncelle. -->
-          <p class="meta">Sürüm <strong>0.1.0</strong> · <strong>14,6 MB</strong> · Android</p>
+          <p class="meta">Beta sürüm <strong>0.1.0</strong> · <strong>14,6 MB</strong> · Android 7.0 ve üzeri</p>
+          <p class="fine">Connity şu anda beta aşamasındadır. Yalnızca resmî Connity kaynağından indirdiğiniz APK'yı yükleyin.</p>
         </div>
         <div>
           <p class="steps-title">Nasıl kurulur?</p>
@@ -417,17 +418,17 @@
         <h4>Yasal</h4>
         <!-- Sayfalar hazır olunca href="#" yerine gerçek adresi yaz ve aria-disabled ile "Yakında" etiketini sil. -->
         <ul>
-          <li><a href="#" aria-disabled="true">Gizlilik Politikası</a><span class="soon-tag">Yakında</span></li>
-          <li><a href="#" aria-disabled="true">Kullanım Koşulları</a><span class="soon-tag">Yakında</span></li>
-          <li><a href="#" aria-disabled="true">KVKK Aydınlatma Metni</a><span class="soon-tag">Yakında</span></li>
-          <li><a href="#" aria-disabled="true">Hesap Silme</a><span class="soon-tag">Yakında</span></li>
+          <li><a href="privacy.html">Gizlilik Politikası</a></li>
+          <li><a href="terms.html">Kullanım Koşulları</a></li>
+          <li><a href="kvkk.html">KVKK Aydınlatma Metni</a></li>
+          <li><a href="account-deletion.html">Hesap Silme</a></li>
         </ul>
       </nav>
       <div>
         <h4>İletişim</h4>
         <ul>
-          <!-- İletişim adresi belli olunca href'i güncelle. -->
-          <li><a href="#" aria-disabled="true">İletişim</a><span class="soon-tag">Yakında</span></li>
+          <li><a href="contact.html">İletişim</a></li>
+          <li><a href="mailto:networkendoria@gmail.com">E-posta gönder</a></li>
         </ul>
       </div>
     </div>
@@ -453,11 +454,6 @@
   btn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
   nav.addEventListener('click', function (e) { if (e.target.tagName === 'A') setMenu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
-
-  // hazır olmayan bağlantılar yerinde kalsın
-  document.querySelectorAll('a[aria-disabled="true"]').forEach(function (a) {
-    a.addEventListener('click', function (e) { e.preventDefault(); });
-  });
 
   // yumuşak giriş
   var items = document.querySelectorAll('.reveal');
