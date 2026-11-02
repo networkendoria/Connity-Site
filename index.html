@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Connity — Toplulukların yeni buluşma noktası</title>
-<meta name="description" content="Connity ile Minecraft sunucularını keşfet, topluluklara katıl, arkadaşlarınla mesajlaş ve kendi gruplarını oluştur. Android için indir. Zyven Studios.">
+<meta name="description" content="Connity; Minecraft sunucularını keşfetmeni, sunucunu tanıtmanı ve oyuncularla topluluk kurmanı sağlayan Android uygulamasıdır. Zyven Studios.">
+<meta property="og:url" content="https://networkendoria.github.io/Connity-Site/">
+<link rel="canonical" href="https://networkendoria.github.io/Connity-Site/">
 <meta name="theme-color" content="#07060b">
 <meta name="color-scheme" content="dark">
 <meta property="og:type" content="website">
@@ -192,6 +194,22 @@
   .studio b { display: block; font-weight: 650; }
   .studio span { font-size: 14px; color: var(--mute); }
 
+  /* membership plans */
+  .plans { margin-top: 36px; display: grid; gap: 16px; }
+  .plan-card { display: flex; flex-direction: column; gap: 16px; min-width: 0; padding: 26px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+  .plan-card.featured { border-color: rgba(167, 139, 250, .48); background: linear-gradient(160deg, rgba(124, 58, 237, .13), rgba(255, 255, 255, .025) 65%); }
+  .plan-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .plan-card h3 { font-size: 20px; letter-spacing: -.02em; }
+  .plan-label { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--violet-soft); font-size: 12px; white-space: nowrap; }
+  .plan-price { font-size: clamp(27px, 4vw, 34px); font-weight: 750; letter-spacing: -.04em; line-height: 1.15; }
+  .plan-price small { font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--mute); }
+  .plan-year { color: var(--mute); font-size: 14px; }
+  .plan-card p { color: var(--mute); font-size: 14px; }
+  .plan-note { margin-top: 24px; padding: 18px 20px; border: 1px solid rgba(167, 139, 250, .32); border-radius: 12px; background: rgba(124, 58, 237, .08); color: var(--mute); font-size: 14px; }
+  .plan-note strong { color: var(--text); }
+  .plan-foot { margin-top: 18px; color: var(--mute); font-size: 14px; }
+  .plan-status { margin-top: auto; padding-top: 12px; color: var(--violet-soft); font-size: 13px; }
+
   /* footer */
   footer { border-top: 1px solid var(--line); padding: 48px 0 36px; background: var(--bg); }
   .foot { display: grid; gap: 36px; }
@@ -223,6 +241,8 @@
     .phones { gap: 22px; }
     .phone { width: min(44%, 244px); }
     .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .plan-card { padding: 30px; }
     .card { padding: 30px; }
     section.block { padding: 112px 0; }
     .shots { gap: 30px; max-width: 880px; }
@@ -268,6 +288,7 @@
       <ul>
         <li><a href="#top">Ana Sayfa</a></li>
         <li><a href="#ozellikler">Özellikler</a></li>
+        <li><a href="#uyelikler">Üyelikler</a></li>
         <li><a href="#hakkinda">Hakkında</a></li>
       </ul>
     </nav>
@@ -280,6 +301,7 @@
     <ul>
       <li><a href="#top">Ana Sayfa</a></li>
       <li><a href="#ozellikler">Özellikler</a></li>
+      <li><a href="#uyelikler">Üyelikler</a></li>
       <li><a href="#hakkinda">Hakkında</a></li>
       <li><a href="#indir">İndir</a></li>
     </ul>
@@ -294,7 +316,7 @@
         <img class="hero-logo" src="assets/logo.png" width="96" height="96" alt="Connity logosu">
         <span class="eyebrow" lang="en">Communities Connected.</span>
         <h1>Toplulukların yeni buluşma noktası.</h1>
-        <p class="lead">Sunucularını keşfet, topluluklara katıl, arkadaşlarınla mesajlaş ve kendi gruplarını oluştur. Her şey tek bir yerde.</p>
+        <p class="lead">Connity; Minecraft sunucularını keşfetmeni, kendi sunucunu tanıtmanı ve oyuncularla topluluk kurmanı sağlayan bir Android uygulamasıdır.</p>
         <div class="actions">
           <a class="btn btn-primary" href="#indir">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>
@@ -302,7 +324,7 @@
           </a>
           <a class="btn btn-ghost" href="#ozellikler">Özellikleri Keşfet</a>
         </div>
-        <p class="fine">Android için · Zyven Studios</p>
+        <p class="fine">Android uygulaması · Beta 0.1.0 · Zyven Studios</p>
       </div>
 
       <!-- Telefon ekranları: gerçek ekran görüntülerini assets/screens/ içine koy (ekran-1.png, ekran-2.png, ekran-3.png).
@@ -348,6 +370,42 @@
           <p>Beğeni, yorum, takip ve mesajlar için bildirim al; gelişmeleri kaçırma.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+
+  <!-- ÜYELİKLER -->
+  <section class="block" id="uyelikler">
+    <div class="wrap">
+      <p class="kicker">Üyelikler</p>
+      <h2>Connity deneyimini seç.</h2>
+      <p class="sub">Connity temel özellikleri ücretsiz sunar. Plus ve Pro, planlanan ücretli abonelik seçenekleridir.</p>
+      <div class="plan-note" role="note">
+        <strong>Satış durumu:</strong> Connity Plus ve Connity Pro henüz satın almaya açık değildir. Aşağıdaki tutarlar planlanan fiyatlardır; bu sayfada ödeme alınmaz. Üyelik avantajları, otomatik yenileme, iptal ve ödeme koşulları satış başlamadan önce açıkça yayımlanacaktır.
+      </div>
+      <div class="plans">
+        <article class="plan-card">
+          <div class="plan-head"><h3>Connity Free</h3><span class="plan-label">Ücretsiz</span></div>
+          <div class="plan-price">0 TL</div>
+          <p>Connity'nin temel topluluk özelliklerine ücretsiz erişim.</p>
+          <span class="plan-status">Beta sürümde ücretsiz</span>
+        </article>
+        <article class="plan-card">
+          <div class="plan-head"><h3>Connity Plus</h3><span class="plan-label">Plus</span></div>
+          <div class="plan-price">99,99 TL <small>/ ay</small></div>
+          <p class="plan-year">Planlanan yıllık fiyat: <strong>1.011,90 TL</strong></p>
+          <p>Plus üyeliğinin sağlayacağı ayrıcalıklar, satın alma açılmadan önce ayrıntılı olarak açıklanacaktır.</p>
+          <span class="plan-status">Planlanan fiyat · Satışta değil</span>
+        </article>
+        <article class="plan-card featured">
+          <div class="plan-head"><h3>Connity Pro</h3><span class="plan-label">Pro</span></div>
+          <div class="plan-price">179,99 TL <small>/ ay</small></div>
+          <p class="plan-year">Planlanan yıllık fiyat: <strong>2.005,88 TL</strong></p>
+          <p>Pro üyeliğinin sağlayacağı ayrıcalıklar, satın alma açılmadan önce ayrıntılı olarak açıklanacaktır.</p>
+          <span class="plan-status">Planlanan fiyat · Satışta değil</span>
+        </article>
+      </div>
+      <p class="plan-foot">Aylık ve yıllık otomatik yenileme modeli planlanmaktadır. Yenileme tarihi, tahsil edilecek tutar ve abonelik iptal yöntemi, satış etkinleştirilmeden önce ödeme adımında ve ilgili koşullarda belirtilecektir. Şu anda aktif abonelik veya otomatik tahsilat yoktur.</p>
     </div>
   </section>
 
@@ -398,8 +456,8 @@
               Android için APK indir
             </a>
           </div>
-          <!-- Sürüm ve boyut gerçek dosyadan: download/connity.apk (15.265.243 bayt). Yeni APK koyunca burayı güncelle. -->
-          <p class="meta">Beta sürüm <strong>0.1.0</strong> · <strong>14,6 MB</strong> · Android 7.0 ve üzeri</p>
+          <!-- APK dosya boyutu: 15.543.771 bayt (yaklaşık 15,5 MB). Yeni APK yayımlandığında sürüm ve boyut bilgisini yeniden kontrol et. -->
+          <p class="meta">Beta sürüm <strong>0.1.0</strong> · <strong>15,5 MB</strong> · Android 7.0 ve üzeri</p>
           <p class="fine">Connity şu anda beta aşamasındadır. Yalnızca resmî Connity kaynağından indirdiğiniz APK'yı yükleyin.</p>
         </div>
         <div>
@@ -453,6 +511,7 @@
       <div>
         <h4>İletişim</h4>
         <ul>
+          <li><a href="#uyelikler">Üyelikler</a></li>
           <li><a href="contact.html">İletişim</a></li>
           <li><a href="mailto:networkendoria@gmail.com">E-posta gönder</a></li>
         </ul>
