@@ -14,8 +14,8 @@ Connity Android uygulamasının resmî tanıtım ve APK indirme sitesi. Zyven St
 
 ## APK
 İndirme butonu `download/connity.apk` dosyasına gider.
-- Sürüm: 0.1.0
-- Dosya boyutu: 15.265.243 bayt (yaklaşık 14,6 MB)
+- Sürüm: 1.0.0 (versionCode 2)
+- Dosya boyutu: 15.707.611 bayt (yaklaşık 15,7 MB)
 - Minimum Android: 7.0 (API 24)
 
 Yeni APK yayımlandığında aynı dosyanın üzerine yükleyin ve `index.html` içindeki sürüm/boyut bilgisini güncelleyin.
