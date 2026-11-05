@@ -125,20 +125,20 @@
   .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
   .fine { margin-top: 18px; font-size: 14px; color: var(--mute); }
 
-  /* phones: frames only, screens are real images dropped into assets/screens */
-  .phones { display: flex; justify-content: center; gap: 16px; }
+  /* phones: frame follows the real screenshot ratio (720x1600 = 9:20), so nothing is cropped */
+  .phones { display: flex; justify-content: center; align-items: flex-start; gap: 16px; }
   .phone {
-    position: relative; width: min(44%, 220px); aspect-ratio: 9 / 19;
-    border-radius: 28px; padding: 7px; background: #15121f;
+    position: relative; width: min(44%, 220px);
+    border-radius: 12% / 5.4%; padding: 6px; background: #15121f;
     border: 1px solid rgba(255, 255, 255, .12);
     box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .9), 0 0 0 1px rgba(0, 0, 0, .6);
   }
   .phones .phone:nth-child(2) { margin-top: 44px; }
-  .screen { position: relative; width: 100%; height: 100%; border-radius: 22px; overflow: hidden; background: #0b0910; display: grid; place-items: center; }
+  .screen { position: relative; width: 100%; aspect-ratio: 9 / 20; border-radius: 9.5% / 4.3%; overflow: hidden; background: #0b0910; display: grid; place-items: center; }
   .screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .screen .empty { text-align: center; padding: 0 14px; color: var(--mute); font-size: 13px; line-height: 1.4; }
   .screen .empty i { display: block; width: 34px; height: 34px; margin: 0 auto 10px; border: 1px dashed rgba(196, 181, 253, .5); border-radius: 10px; }
-  .phone::before { content: ""; position: absolute; top: 13px; left: 50%; width: 36px; height: 5px; transform: translateX(-50%); border-radius: 4px; background: #000; z-index: 2; }
+  .phone::after { content: ""; position: absolute; right: -3px; top: 20%; width: 3px; height: 11%; border-radius: 0 2px 2px 0; background: #2a2638; }
 
   /* sections */
   section.block { padding: 72px 0; border-top: 1px solid var(--line); }
@@ -157,10 +157,8 @@
   .card h3 { font-size: 18px; font-weight: 650; letter-spacing: -.01em; }
   .card p { margin-top: 8px; color: var(--mute); font-size: 15px; }
 
-  .shots { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .shots figure .phone { width: 100%; border-radius: 20px; padding: 5px; }
-  .shots figure .screen { border-radius: 16px; }
-  .shots figure .phone::before { top: 9px; width: 22px; height: 4px; }
+  .shots { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px 16px; max-width: 460px; }
+  .shots figure .phone { width: 100%; padding: 5px; }
   .shots .empty { font-size: 11px; }
   .shots .empty i { width: 24px; height: 24px; margin-bottom: 8px; border-radius: 7px; }
   .shots figcaption { margin-top: 12px; font-size: 13px; color: var(--mute); text-align: center; }
@@ -199,6 +197,8 @@
   .plan-card { display: flex; flex-direction: column; gap: 16px; min-width: 0; padding: 26px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
   .plan-card.featured { border-color: rgba(167, 139, 250, .48); background: linear-gradient(160deg, rgba(124, 58, 237, .13), rgba(255, 255, 255, .025) 65%); }
   .plan-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .plan-title { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .emblem { width: 40px; height: 40px; flex: none; object-fit: contain; }
   .plan-card h3 { font-size: 20px; letter-spacing: -.02em; }
   .plan-label { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--violet-soft); font-size: 12px; white-space: nowrap; }
   .plan-price { font-size: clamp(27px, 4vw, 34px); font-weight: 750; letter-spacing: -.04em; line-height: 1.15; }
@@ -245,7 +245,7 @@
     .plan-card { padding: 30px; }
     .card { padding: 30px; }
     section.block { padding: 112px 0; }
-    .shots { gap: 30px; max-width: 880px; }
+    .shots { grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 960px; }
     .dl-card { grid-template-columns: 1.1fr .9fr; padding: 56px; gap: 64px; }
     .about { grid-template-columns: 1fr auto; align-items: center; gap: 64px; }
     .foot { grid-template-columns: 1.5fr 1fr 1fr; gap: 56px; }
@@ -259,7 +259,7 @@
     .hero-logo { width: 112px; height: 112px; }
     .cards { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
     .card { min-height: 258px; padding: 28px; }
-    .shots { max-width: 980px; gap: 42px; }
+    .shots { max-width: 1080px; gap: 40px; }
     .shots figure .phone { max-width: 250px; margin: 0 auto; }
     .dl-card { padding: 64px; }
   }
@@ -327,16 +327,16 @@
         <p class="fine">Android uygulaması · Beta 1.0.0 · Zyven Studios</p>
       </div>
 
-      <!-- Telefon ekranları: gerçek ekran görüntülerini assets/screens/ içine koy (ekran-1.png, ekran-2.png, ekran-3.png).
+      <!-- Telefon ekranları: gerçek ekran görüntüleri assets/screens/ içinde (ana-sayfa.png, ekran-1.png, ekran-2.png, ekran-3.png), oran 9:20.
            Dosya yoksa boş çerçeve görünür, sahte görsel gösterilmez. -->
       <div class="phones reveal" role="group" aria-label="Uygulama ekran görüntüleri">
         <div class="phone"><div class="screen">
           <div class="empty"><i></i>Ekran görüntüsü yakında</div>
-          <img src="assets/screens/ekran-1.png" alt="Connity uygulama ekranı: Keşfet" onerror="this.remove()">
+          <img src="assets/screens/ana-sayfa.png" alt="Connity uygulama ekranı: Ana Sayfa" width="540" height="1200" onerror="this.remove()">
         </div></div>
         <div class="phone"><div class="screen">
           <div class="empty"><i></i>Ekran görüntüsü yakında</div>
-          <img src="assets/screens/ekran-2.png" alt="Connity uygulama ekranı: Mesajlar" onerror="this.remove()">
+          <img src="assets/screens/ekran-2.png" alt="Connity uygulama ekranı: Sohbetler" width="540" height="1200" onerror="this.remove()">
         </div></div>
       </div>
     </div>
@@ -391,14 +391,14 @@
           <span class="plan-status">Beta sürümde ücretsiz</span>
         </article>
         <article class="plan-card">
-          <div class="plan-head"><h3>Connity Plus</h3><span class="plan-label">Plus</span></div>
+          <div class="plan-head"><div class="plan-title"><img class="emblem" src="assets/uyelik-plus.png" width="40" height="40" alt="" loading="lazy"><h3>Connity Plus</h3></div><span class="plan-label">Plus</span></div>
           <div class="plan-price">99,99 TL <small>/ ay</small></div>
           <p class="plan-year">Planlanan yıllık fiyat: <strong>1.011,90 TL</strong></p>
           <p>Plus üyeliğinin sağlayacağı ayrıcalıklar, satın alma açılmadan önce ayrıntılı olarak açıklanacaktır.</p>
           <span class="plan-status">Planlanan fiyat · Satışta değil</span>
         </article>
         <article class="plan-card featured">
-          <div class="plan-head"><h3>Connity Pro</h3><span class="plan-label">Pro</span></div>
+          <div class="plan-head"><div class="plan-title"><img class="emblem" src="assets/uyelik-pro.png" width="40" height="40" alt="" loading="lazy"><h3>Connity Pro</h3></div><span class="plan-label">Pro</span></div>
           <div class="plan-price">179,99 TL <small>/ ay</small></div>
           <p class="plan-year">Planlanan yıllık fiyat: <strong>2.005,88 TL</strong></p>
           <p>Pro üyeliğinin sağlayacağı ayrıcalıklar, satın alma açılmadan önce ayrıntılı olarak açıklanacaktır.</p>
@@ -420,21 +420,28 @@
         <figure class="reveal">
           <div class="phone"><div class="screen">
             <div class="empty"><i></i>Yakında</div>
-            <img src="assets/screens/ekran-1.png" alt="Connity: Keşfet ekranı" loading="lazy" onerror="this.remove()">
+            <img src="assets/screens/ana-sayfa.png" alt="Connity: Ana Sayfa ekranı" width="540" height="1200" loading="lazy" onerror="this.remove()">
+          </div></div>
+          <figcaption>Ana Sayfa</figcaption>
+        </figure>
+        <figure class="reveal">
+          <div class="phone"><div class="screen">
+            <div class="empty"><i></i>Yakında</div>
+            <img src="assets/screens/ekran-1.png" alt="Connity: Keşfet ekranı" width="540" height="1200" loading="lazy" onerror="this.remove()">
           </div></div>
           <figcaption>Keşfet</figcaption>
         </figure>
         <figure class="reveal">
           <div class="phone"><div class="screen">
             <div class="empty"><i></i>Yakında</div>
-            <img src="assets/screens/ekran-2.png" alt="Connity: Mesajlar ekranı" loading="lazy" onerror="this.remove()">
+            <img src="assets/screens/ekran-2.png" alt="Connity: Sohbetler ekranı" width="540" height="1200" loading="lazy" onerror="this.remove()">
           </div></div>
-          <figcaption>Mesajlar</figcaption>
+          <figcaption>Sohbetler</figcaption>
         </figure>
         <figure class="reveal">
           <div class="phone"><div class="screen">
             <div class="empty"><i></i>Yakında</div>
-            <img src="assets/screens/ekran-3.png" alt="Connity: Profil ekranı" loading="lazy" onerror="this.remove()">
+            <img src="assets/screens/ekran-3.png" alt="Connity: Profil ekranı" width="540" height="1200" loading="lazy" onerror="this.remove()">
           </div></div>
           <figcaption>Profil</figcaption>
         </figure>
@@ -456,8 +463,8 @@
               Android için APK indir
             </a>
           </div>
-          <!-- APK dosya boyutu: 15.707.611 bayt (yaklaşık 15,7 MB). Yeni APK yayımlandığında sürüm ve boyut bilgisini yeniden kontrol et. -->
-          <p class="meta">Beta sürüm <strong>1.0.0</strong> · <strong>15,7 MB</strong> · Android 7.0 ve üzeri</p>
+          <!-- APK dosya boyutu: 15.911.858 bayt (yaklaşık 15,9 MB). Yeni APK yayımlandığında sürüm ve boyut bilgisini yeniden kontrol et. -->
+          <p class="meta">Beta sürüm <strong>1.0.0</strong> · <strong>15,9 MB</strong> · Android 7.0 ve üzeri</p>
           <p class="fine">Connity şu anda beta aşamasındadır. Yalnızca resmî Connity kaynağından indirdiğiniz APK'yı yükleyin.</p>
         </div>
         <div>

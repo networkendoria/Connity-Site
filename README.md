@@ -10,12 +10,13 @@ Connity Android uygulamasının resmî tanıtım ve APK indirme sitesi. Zyven St
 - `account-deletion.html`: Hesap Silme
 - `contact.html`: İletişim
 - `assets/logo.png`: Connity logosu
-- `assets/screens/`: gerçek uygulama ekran görüntüleri (`ekran-1.png`, `ekran-2.png`, `ekran-3.png`). Kullanıcı talebi doğrultusunda bu görsellerin yerine sahte görsel eklenmemiştir; mevcut boş çerçeveler korunmuştur.
+- `assets/screens/`: gerçek uygulama ekran görüntüleri (`ana-sayfa.png`, `ekran-1.png` Keşfet, `ekran-2.png` Sohbetler, `ekran-3.png` Profil; oran 9:20). Sahte görsel kullanılmaz; dosya yoksa boş telefon çerçevesi görünür.
+- `assets/uyelik-plus.png`, `assets/uyelik-pro.png`: üyelik sembolleri (şeffaf arka plan).
 
 ## APK
 İndirme butonu `download/connity.apk` dosyasına gider.
 - Sürüm: 1.0.0 (versionCode 2)
-- Dosya boyutu: 15.707.611 bayt (yaklaşık 15,7 MB)
+- Dosya boyutu: 15.911.858 bayt (yaklaşık 15,9 MB)
 - Minimum Android: 7.0 (API 24)
 
 Yeni APK yayımlandığında aynı dosyanın üzerine yükleyin ve `index.html` içindeki sürüm/boyut bilgisini güncelleyin.
